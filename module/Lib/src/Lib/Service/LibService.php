@@ -26,6 +26,7 @@ class LibService
     }
 	public function stateSelectService($data,$id)
     {
+		//print_r($data);
 		$libTable = new LibTable($this->adapter);
 		$res = $libTable->stateSelectModel($data,$id);	
         return $res;

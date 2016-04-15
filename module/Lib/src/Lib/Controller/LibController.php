@@ -62,6 +62,9 @@ class LibController extends AbstractRestfulController
         $body = $this->getRequest()->getContent();
 		//print_r($body);exit;
 		$data = json_decode($body);
+		
+		
+		
 		$id  = $this->params('id');
 		if( !isset($data->country_id)) {
           $resp = array('status' => 'failure', 'errorCode' => 501, 'errorMessage' => 'Country  should not be empty');

@@ -57,12 +57,12 @@ return $response;
 }
 public function stateSelectModel($data,$id)
 {     
-
+//print_r($data); exit;
 	  $sql = new Sql($this->adapter);
 	  $select = $sql->select();
 	  $select->from('states_master');
-	  $select->where(array('country_id' => $id));
-	  //echo $select->getSqlString($this->adapter->getPlatform()); exit;
+	  $select->where(array('country_id' => $data->country_id));
+	  $select->getSqlString($this->adapter->getPlatform());
 	  $result =$this->executeSelect($select);
 	  $rows = array_values(iterator_to_array($result));
 	  $response=array();
@@ -71,6 +71,7 @@ public function stateSelectModel($data,$id)
 	  if ($result->count() >= 1 ) { 
 				foreach($rows as $key=>$value)
 				{
+					
 					$response[] = array('State ID' => $value->id,'State Name' => $value->name,'status' => 'success');
 				}
 				
@@ -88,6 +89,7 @@ public function stateSelectModel($data,$id)
 				$response = array('errorCode' => 520,'status' => 'failure');
 			}
 		}
+		//print_r($response); exit;
 return $response;
 }
 

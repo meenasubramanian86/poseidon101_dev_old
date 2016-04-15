@@ -32,7 +32,7 @@ return array(
             	'state' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/api/v1/lib/state[/:id]',
+                    'route'    => '/api/v1/lib/state',
                      'constraints' => array(
                             'id' => '[0-9]+',
                          ),

@@ -29,8 +29,8 @@ class RegisterTable extends AbstractTableGateway
         $sql = new Sql($this->adapter);
 		$select = $sql->select();
 		$select->from('users');
-		$select->where(array('email_id' => $setdata['email_id']));
-		  $select->getSqlString($this->adapter->getPlatform());
+		$select->where(array('email_id' => $setdata['email_id'])); 
+		$select->getSqlString($this->adapter->getPlatform());
 		  $result =$this->executeSelect($select);
 		  $rows = array_values(iterator_to_array($result));
 		  $response=array();

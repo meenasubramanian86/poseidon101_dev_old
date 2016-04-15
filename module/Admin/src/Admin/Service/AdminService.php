@@ -207,7 +207,6 @@ class AdminService
  
   public function countriesMasterService($data)
     {
-		
 		$AdminTable = new AdminTable($this->adapter);
 		$res = $AdminTable->countriesMasterTable($data);	
         return $res;

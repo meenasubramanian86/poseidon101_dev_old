@@ -477,22 +477,22 @@ public function statesMasterTable($data)
 		$select = $sql->select();
 		$select->from('states_master');
 		$select->where(array('country_id' => $data->country_id));
-		$select->getSqlString($this->adapter->getPlatform());
+		 $select->getSqlString($this->adapter->getPlatform()); 
 		$result =$this->executeSelect($select);
 		$rows = array_values(iterator_to_array($result));
 		$response=array();
         try
         {
 			if ( $result->count() >= 1 ) { 
-				foreach($rows as $key=>$value)
-				{
+				
 					foreach($rows as $key=>$value)
 					{
-					$response[] = array('State Name' =>$value->name,
+						
+					$response[] = array('stateId' =>$value->id,'name' =>$value->name,
 					'status' => 'success');
 					}
 					
-				}
+				
 				
 			}
 			else
@@ -528,7 +528,7 @@ public function citiesMasterTable($data)
 				{
 					foreach($rows as $key=>$value)
 					{
-					$response[] = array('City Name' =>$value->name,
+					$response[] = array('cityId'=>$value->id,'name' =>$value->name,
 					'status' => 'success');
 					}
 					
@@ -597,19 +597,20 @@ public function areasMasterTable($data)
 		$select->getSqlString($this->adapter->getPlatform());
 		$result =$this->executeSelect($select);
 		$rows = array_values(iterator_to_array($result));
+		
 		$response=array();
         try
         {
 			if ( $result->count() >= 1 ) { 
-				foreach($rows as $key=>$value)
-				{
+				
 					foreach($rows as $key=>$value)
 					{
-					$response[] = array('Country Name' =>$value->name,
+						
+					$response[] = array('id' =>$value->id,'name' =>$value->name,
 					'status' => 'success');
 					}
 					
-				}
+				
 				
 			}
 			else
@@ -623,7 +624,7 @@ public function areasMasterTable($data)
               $response = array('errorCode' => 511);
             }
         }
-
+//print_r($response); exit;
         return $response;
     }
 public function adminManageCandidateModel()

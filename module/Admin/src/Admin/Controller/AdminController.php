@@ -11,6 +11,7 @@ use Zend\Http\Response;
 use Admin\Service\AdminService;
 
 use Zend\Http\Client as HttpClient;
+error_reporting(0);
 
 
 class AdminController extends AbstractRestfulController
@@ -682,13 +683,12 @@ public function areasMasterAction()
     
         $body = $this->getRequest()->getContent();
 		$data = json_decode($body);
-		
 		/*if(!isset($data->city_id)) {
           $resp = array('status' => 'failure', 'errorCode' => 501, 'errorMessage' => 'City ID should not be empty');
           return new JsonModel($resp);
         }*/
 			
-			if($this->getRequest()->getMethod() == 'POST') {
+			if($this->getRequest()->getMethod() == 'GET') {
 				$sm = $this->getServiceLocator();
 				$dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
 				$AdminService = new AdminService($dbAdapter);
